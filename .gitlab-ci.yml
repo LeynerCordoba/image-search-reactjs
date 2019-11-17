@@ -1,10 +1,10 @@
 image: node:latest  
 
 stages:
-  - deploy
+  - build
 
 pages:
-  stage: deploy
+  stage: build
   script:
   - npm install
   artifacts:         #Luego de instalar los modules,exportamos un artifacts
@@ -15,6 +15,3 @@ pages:
     paths:
       - node_modules/ #Lo guardamos en cache, para no pasar instalando node modules cada rato
 
-  only:
-  - branches
-  - master
