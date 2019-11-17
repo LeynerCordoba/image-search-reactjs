@@ -6,10 +6,15 @@ stages:
 pages:
   stage: deploy
   script:
-  - echo 'Nothing to do...'
-  artifacts:
+  - npm install
+  artifacts:         #Luego de instalar los modules,exportamos un artifacts
+    expire_in: 1hr   #dicho artifact solo vivira por una hora
     paths:
-    - public
+      - node_modules/   #Ruta de lo que vamos a exportar
+  cache:
+    paths:
+      - node_modules/ #Lo guardamos en cache, para no pasar instalando node modules cada rato
+
   only:
   - branches
   - master
